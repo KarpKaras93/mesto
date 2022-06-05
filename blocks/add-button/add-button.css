@@ -18,6 +18,7 @@
 
 .add-button:hover {
   opacity: 0.6;
+  cursor: url(../../images/Cursor.svg), pointer;
 }
 
 @media screen and (max-width: 920px) {
@@ -45,5 +46,6 @@
 @media screen and (max-width: 320px) {
   .add-button {
     width: 100%;
+    background-image: url(../../images/AddButton320.svg);
   }
 }

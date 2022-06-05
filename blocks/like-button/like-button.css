@@ -15,4 +15,5 @@
 
 .like-button:hover {
   opacity: 0.5;
+  cursor: url(../../images/Cursor.svg), pointer;
 }
