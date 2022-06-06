@@ -7,8 +7,8 @@ let profileDescription = document.querySelector('.profile-info__subtitle');
 const saveButton = document.querySelector('.popup__save-button');
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__content');
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_description');
+let nameInput = document.querySelector('.popup__input_type_name');
+let jobInput = document.querySelector('.popup__input_type_description');
 
 function openPopup() {
   popup.classList.add('popup_opened');
