@@ -14,7 +14,7 @@
 
 .edit-button:hover {
   opacity: 0.6;
-  cursor: url(../../images/Cursor.svg), pointer;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 920px) {
