@@ -23,50 +23,7 @@
         </div>
         <button class="add-button" type="button"></button>
       </section>
-      <section class="elements">
-        <div class="element">
-          <img class="element__photo" src="images/Karachaevsk.png" alt="Карачаевск">
-          <div class="element__item">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="images/Elbrus.png" alt="Эльбрус">
-          <div class="element__item">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="images/Dombay.png" alt="Домбай">
-          <div class="element__item">
-            <h2 class="element__title">Домбай</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="images/Samara.jpg" alt="Самара">
-          <div class="element__item">
-            <h2 class="element__title">Самара</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="images/StPeterpurg.jpg" alt="Санкт-Петербург">
-          <div class="element__item">
-            <h2 class="element__title">Санкт-Петербург</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="images/sochi.jpg" alt="Сочи">
-          <div class="element__item">
-            <h2 class="element__title">Сочи</h2>
-            <button class="like-button" type="button"></button>
-          </div>
-        </div>
-      </section>
+      <ul class="elements"></ul>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&#169; 2022. Илья Карпушин</p>
@@ -83,8 +40,38 @@
         </form>
       </div>
     </div>
+    <div class="popup popup-add">
+      <div class="popup__content popup-add__content">
+        <button class="popup__close-button" type="button"></button>
+        <h2 class="popup__title popup-add__title">Новое место</h2>
+        <form class="popup-add__form">
+          <input class="popup__input popup-add__input_type_place" type="text" name="place" placeholder="Название">
+          <input class="popup__input popup-add__input_type_link" type="text" name="link"
+            placeholder="Ссылка на картинку">
+          <button class="popup__save-button popup-add__add-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup-element">
+      <div class="popup-element__content">
+        <button class="popup__close-button" type="button"></button>
+        <img class="popup-element__photo" src="" alt="">
+        <p class="popup-element__title"></p>
+      </div>
+    </div>
   </div>
+  <template class="element_template">
+    <li class="element">
+      <img class="element__photo" src="" alt="">
+      <button class="delete-button" type="button"></button>
+      <div class="element__item">
+        <h2 class="element__title"></h2>
+        <button class="like-button" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>

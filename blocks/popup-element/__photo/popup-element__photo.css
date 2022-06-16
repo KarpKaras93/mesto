@@ -1,0 +1,7 @@
+.popup-element__photo {
+  max-width: 75vw;
+  max-height: 75vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
