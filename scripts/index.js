@@ -48,8 +48,8 @@ function rendetElement(text) {
   newElement.querySelector('.like-button').addEventListener('click', e => {
     e.target.classList.toggle('like-button_active');
   });
-//просмотр карточки
-  newElement.querySelector('.element__photo').addEventListener('click', function() {
+  //просмотр карточки
+  newElement.querySelector('.element__photo').addEventListener('click', function () {
     fullPhoto.src = newElement.querySelector('.element__photo').src;
     photoTitle.textContent = newElement.querySelector('.element__title').textContent;
     openPopupElement();
@@ -94,8 +94,8 @@ function createElement(e) {
   newElement.querySelector('.like-button').addEventListener('click', e => {
     e.target.classList.toggle('like-button_active');
   });
-//просмотр карточки
-  newElement.querySelector('.element__photo').addEventListener('click', function() {
+  //просмотр карточки
+  newElement.querySelector('.element__photo').addEventListener('click', function () {
     fullPhoto.src = newElement.querySelector('.element__photo').src;
     photoTitle.textContent = newElement.querySelector('.element__title').textContent;
     openPopupElement();
