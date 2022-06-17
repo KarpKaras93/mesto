@@ -141,7 +141,7 @@ function openPopup() {
 editButton.addEventListener('click', openPopup);
 
 //функция закрытия всех модалок
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
+const popupCloseButton = document.querySelectorAll('.close-button');
 
 function closePopup() {
   popup.classList.remove('popup_opened');
