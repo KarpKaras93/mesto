@@ -1,30 +1,3 @@
-const cardElements = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const elementsList = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element_template').content;
 const addForm = document.querySelector('.popup-add__form');
@@ -32,7 +5,6 @@ const placeName = document.querySelector('.popup__input_type_place');
 const placeLink = document.querySelector('.popup__input_type_link');
 const addCardElement = document.querySelector('.popup-add__add-button');
 const deleteButton = document.querySelector('.delete-button');
-const likeButton = document.querySelectorAll('.like-button');
 
 //функция выгрузки карточек из массива
 function rendetElement(text) {

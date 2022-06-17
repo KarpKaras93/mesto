@@ -18,10 +18,10 @@
         <img class="profile__avatar" src="images/Profile.jpg" alt="аватар">
         <div class="profile-info">
           <h1 class="profile-info__title">Жак-ив Кусто</h1>
-          <button class="edit-button" type="button"></button>
+          <button class="profile-info__edit-button" type="button"></button>
           <p class="profile-info__subtitle">Исследователь океана</p>
         </div>
-        <button class="add-button" type="button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <ul class="elements"></ul>
     </main>
@@ -29,47 +29,48 @@
       <p class="footer__copyright">&#169; 2022. Илья Карпушин</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__content">
-        <button class="close-button" type="button"></button>
+        <button class="popup__close-button" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup__profile-form">
+        <form class="popup__form popup__form_type_edit" name="profile-form">
           <input class="popup__input popup__input_type_name" type="text" name="name">
           <input class="popup__input popup__input_type_description" type="text" name="description">
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup-add">
-      <div class="popup__content popup-add__content">
-        <button class="close-button" type="button"></button>
-        <h2 class="popup__title popup-add__title">Новое место</h2>
-        <form class="popup-add__form">
+    <div class="popup popup_type_add">
+      <div class="popup__content">
+        <button class="popup__close-button" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form popup__form_type_add" name="add-form">
           <input class="popup__input popup__input_type_place" type="text" name="place" placeholder="Название">
           <input class="popup__input popup__input_type_link" type="text" name="link"
             placeholder="Ссылка на картинку">
-          <button class="popup__save-button popup-add__add-button" type="submit">Создать</button>
+          <button class="popup__save-button" type="submit">Создать</button>
         </form>
       </div>
     </div>
-    <div class="popup-element">
-      <div class="popup-element__content">
-        <button class="close-button" type="button"></button>
-        <img class="popup-element__photo" alt="пейзаж места">
-        <p class="popup-element__title"></p>
+    <div class="popup popup_type_img">
+      <div class="popup__card">
+        <button class="popup__close-button" type="button"></button>
+        <img class="popup__photo" alt="пейзаж места">
+        <p class="popup__subtitle"></p>
       </div>
     </div>
   </div>
   <template class="element_template">
     <li class="element">
       <img class="element__photo" alt="пейзаж места">
-      <button class="delete-button" type="button"></button>
+      <button class="element__delete-button" type="button"></button>
       <div class="element__item">
         <h2 class="element__title"></h2>
-        <button class="like-button" type="button"></button>
+        <button class="element__like-button" type="button"></button>
       </div>
     </li>
   </template>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 
 </body>
