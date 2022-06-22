@@ -31,8 +31,7 @@ function openPopup(popup) {
 
 const closePopupByOverlay = (e) => {
   if (e.target === e.currentTarget) {
-    const popup = document.querySelector('.popup_opened')
-    closePopup(popup);
+    closePopup(e.currentTarget);
   }
 };
 
@@ -60,9 +59,10 @@ function createElement(card) {
   const elementTitle = newElement.querySelector('.element__title');
   elementTitle.textContent = card.name;
   elementPhoto.src = card.link;
+  elementPhoto.alt = card.name;
   //удаление добавленной карточки
   newElement.querySelector('.element__delete-button').addEventListener('click', () => {
-    deleteElement(newElement);
+    newElement.remove();
   });
   //лайки
   newElement.querySelector('.element__like-button').addEventListener('click', e => {
@@ -71,6 +71,7 @@ function createElement(card) {
   //просмотр карточки
   elementPhoto.addEventListener('click', function () {
     photoFull.src = elementPhoto.src;
+    photoFull.alt = elementTitle.textContent;
     photoTitle.textContent = elementTitle.textContent;
     openPopup(popupElement);
   });
@@ -78,20 +79,14 @@ function createElement(card) {
 };
 
 //функция выгрузки карточки
-function rendetElement(card) {
-  const newElement = createElement(card);
+function renderElement(newElement) {
   elementsList.prepend(newElement);
 };
 
 cardElements.forEach((card) => {
-  createElement(card);
-  rendetElement(card);
+  const newElement = createElement(card);
+  renderElement(newElement);
 });
-
-//функция удаления карточек
-function deleteElement(element) {
-  element.remove();
-};
 
 //обработчик добавления новых карточек
 formAddCard.addEventListener('submit', (e) => {
@@ -100,9 +95,8 @@ formAddCard.addEventListener('submit', (e) => {
     name: placeName.value,
     link: placeLink.value,
   };
-  createElement(card);
-  elementsList.append(card);
-  rendetElement(card);
+  const newElement = createElement(card);
+  renderElement(newElement);
   formAddCard.reset();
   closePopup(popupAddcard);
 });
@@ -118,13 +112,11 @@ buttonAddCard.addEventListener('click', () => {
   openPopup(popupAddcard);
 });
 
-
 //обработчики закрытия модалок
 popupCloseButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    closePopup(popupEditProfile);
-    closePopup(popupAddcard);
-    closePopup(popupElement);
+  button.addEventListener('click', (e) => {
+    const popup = e.target.closest('.popup');
+    closePopup(popup);
   });
 });
 
