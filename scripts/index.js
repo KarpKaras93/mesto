@@ -22,6 +22,9 @@ const photoTitle = document.querySelector('.popup__subtitle');
 //переменные открытия/закрытия всех модалок
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
+const buttonSubmitFormAddCard = document.addForm.submit;
+const buttonSubmitFormEditProfile = document.profileForm.submit;
+
 const params = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -38,7 +41,6 @@ function openPopup(popup) {
   document.addEventListener('keydown', closePopupByEsc);
   popup.addEventListener('click', closePopupByOverlay);
   popup.classList.add('popup_opened');
-  /*toggleSubmitButtonState();*/
 };
 
 const closePopupByEsc = (e) => {
@@ -119,9 +121,8 @@ formAddCard.addEventListener('submit', (e) => {
   renderElement(newElement);
   formAddCard.reset();
   closePopup(popupAddcard);
+  inactiveButton(buttonSubmitFormAddCard, params);
 });
-
-formAddCard.addEventListener('submit', inactiveButton);
 
 //обработчики открытия модалок
 buttonEditProfile.addEventListener('click', () => {
@@ -131,8 +132,8 @@ buttonEditProfile.addEventListener('click', () => {
 });
 
 buttonAddCard.addEventListener('click', () => {
-  /*formAddCard.reset();
-  inactiveButton();*/
+  formAddCard.reset();
+  inactiveButton(buttonSubmitFormAddCard, params);
 
   openPopup(popupAddcard);
 });

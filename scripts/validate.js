@@ -19,7 +19,6 @@ const activeButton = (buttonElement, params) => {
 
 const inactiveButton = (buttonElement, params) => {
   buttonElement.disabled = true;
-  console.log(buttonElement, 'шо это')
   buttonElement.classList.add(params.inactiveButtonClass);
 };
 
