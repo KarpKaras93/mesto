@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="images/Logo.svg" alt="место" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img class="profile__avatar" src="images/Profile.jpg" alt="аватар" />
+          <div class="profile-info">
+            <h1 class="profile-info__title">Жак-ив Кусто</h1>
+            <button class="profile-info__edit-button" type="button"></button>
+            <p class="profile-info__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+        <ul class="elements"></ul>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&#169; 2022. Илья Карпушин</p>
+      </footer>
 
-<body>
-  <div class="page">
-    <header class="header">
-      <img class="header__logo" src="images/Logo.svg" alt="место">
-    </header>
-    <main class="content">
-      <section class="profile">
-        <img class="profile__avatar" src="images/Profile.jpg" alt="аватар">
-        <div class="profile-info">
-          <h1 class="profile-info__title">Жак-ив Кусто</h1>
-          <button class="profile-info__edit-button" type="button"></button>
-          <p class="profile-info__subtitle">Исследователь океана</p>
+      <div class="popup popup_type_edit">
+        <div class="popup__content">
+          <button class="popup__close-button" type="button"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form popup__form_type_edit" name="profile-form" novalidate>
+            <input
+              class="popup__input popup__input_type_name"
+              type="text"
+              name="name"
+              id="name-input"
+              minlength="2"
+              maxlength="40"
+              placeholder="Имя"
+              required
+            />
+            <span class="popup__error name-input-error"></span>
+            <input
+              class="popup__input popup__input_type_description"
+              type="text"
+              name="description"
+              id="description-input"
+              minlength="2"
+              maxlength="200"
+              placeholder="О себе"
+              required
+            />
+            <span class="popup__error description-input-error"></span>
+            <button class="popup__submit-button" type="submit">
+              Сохранить
+            </button>
+          </form>
         </div>
-        <button class="profile__add-button" type="button"></button>
-      </section>
-      <ul class="elements"></ul>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">&#169; 2022. Илья Карпушин</p>
-    </footer>
-
-    <div class="popup popup_type_edit">
-      <div class="popup__content">
-        <button class="popup__close-button" type="button"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_type_edit" name="profile-form">
-          <input class="popup__input popup__input_type_name" type="text" name="name" required>
-          <input class="popup__input popup__input_type_description" type="text" name="description" required>
-          <button class="popup__save-button" type="submit">Сохранить</button>
-        </form>
+      </div>
+      <div class="popup popup_type_add">
+        <div class="popup__content">
+          <button class="popup__close-button" type="button"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__form_type_add" name="add-form" novalidate>
+            <input
+              class="popup__input popup__input_type_place"
+              type="text"
+              name="place"
+              id="place-input"
+              minlength="2"
+              maxlength="30"
+              placeholder="Название"
+              required
+            />
+            <span class="popup__error place-input-error"></span>
+            <input
+              class="popup__input popup__input_type_link"
+              type="url"
+              name="link"
+              id="link-input"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__error link-input-error"></span>
+            <button class="popup__submit-button" type="submit">Создать</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_type_img">
+        <div class="popup__card">
+          <button class="popup__close-button" type="button"></button>
+          <img class="popup__photo" alt="пейзаж места" />
+          <p class="popup__subtitle"></p>
+        </div>
       </div>
     </div>
-    <div class="popup popup_type_add">
-      <div class="popup__content">
-        <button class="popup__close-button" type="button"></button>
-        <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_type_add" name="add-form">
-          <input class="popup__input popup__input_type_place" type="text" name="place" placeholder="Название" required>
-          <input class="popup__input popup__input_type_link" type="url" name="link" placeholder="Ссылка на картинку" required>
-          <button class="popup__save-button" type="submit">Создать</button>
-        </form>
-      </div>
-    </div>
-    <div class="popup popup_type_img">
-      <div class="popup__card">
-        <button class="popup__close-button" type="button"></button>
-        <img class="popup__photo" alt="пейзаж места">
-        <p class="popup__subtitle"></p>
-      </div>
-    </div>
-  </div>
-  <template class="element_template">
-    <li class="element">
-      <img class="element__photo" alt="пейзаж места">
-      <button class="element__delete-button" type="button"></button>
-      <div class="element__item">
-        <h2 class="element__title"></h2>
-        <button class="element__like-button" type="button"></button>
-      </div>
-    </li>
-  </template>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/index.js"></script>
-
-</body>
-
+    <template class="element_template">
+      <li class="element">
+        <img class="element__photo" alt="пейзаж места" />
+        <button class="element__delete-button" type="button"></button>
+        <div class="element__item">
+          <h2 class="element__title"></h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>

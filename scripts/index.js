@@ -12,7 +12,6 @@ const profileDescription = document.querySelector('.profile-info__subtitle');
 const formEditProfile = document.querySelector('.popup__form_type_edit');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputDescription = document.querySelector('.popup__input_type_description');
-const buttonSave = document.querySelector('.popup__save-button');
 //переменные для добавления карточек
 const popupAddcard = document.querySelector('.popup_type_add');
 const buttonAddCard = document.querySelector('.profile__add-button');
@@ -23,10 +22,30 @@ const photoTitle = document.querySelector('.popup__subtitle');
 //переменные открытия/закрытия всех модалок
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
+const params = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_active'
+};
+
+enableValidation(params);
+
 //функции открытия/закрытия модалок
 function openPopup(popup) {
+  document.addEventListener('keydown', closePopupByEsc);
   popup.addEventListener('click', closePopupByOverlay);
   popup.classList.add('popup_opened');
+  /*toggleSubmitButtonState();*/
+};
+
+const closePopupByEsc = (e) => {
+  if (e.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
 };
 
 const closePopupByOverlay = (e) => {
@@ -36,6 +55,7 @@ const closePopupByOverlay = (e) => {
 };
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', closePopupByEsc);
   popup.removeEventListener('click', closePopupByOverlay);
   popup.classList.remove('popup_opened');
 };
@@ -101,6 +121,8 @@ formAddCard.addEventListener('submit', (e) => {
   closePopup(popupAddcard);
 });
 
+formAddCard.addEventListener('submit', inactiveButton);
+
 //обработчики открытия модалок
 buttonEditProfile.addEventListener('click', () => {
   inputName.value = profileName.textContent;
@@ -109,6 +131,9 @@ buttonEditProfile.addEventListener('click', () => {
 });
 
 buttonAddCard.addEventListener('click', () => {
+  /*formAddCard.reset();
+  inactiveButton();*/
+
   openPopup(popupAddcard);
 });
 
