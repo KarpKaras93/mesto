@@ -114,7 +114,7 @@ formAddCard.addEventListener('submit', (e) => {
   renderElement(newElement);
   formAddCard.reset();
   closePopup(popupAddcard);
-  inactiveButton(buttonSubmitFormAddCard);
+  formCardAdd.inactiveButton(buttonSubmitFormAddCard);
 });
 
 //обработчики открытия модалок
@@ -126,7 +126,7 @@ buttonEditProfile.addEventListener('click', () => {
 
 buttonAddCard.addEventListener('click', () => {
   formAddCard.reset();
-  inactiveButton(buttonSubmitFormAddCard);
+  formCardAdd.inactiveButton(buttonSubmitFormAddCard);
 
   openPopup(popupAddcard);
 });

@@ -35,7 +35,6 @@ export class Card {
     this._element.querySelector('.element__photo').addEventListener('click', () => {
       this._callbackPhotoClick(this._title, this._photo);
     });
-
   }
 };
 
