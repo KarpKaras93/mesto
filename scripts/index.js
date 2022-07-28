@@ -26,9 +26,6 @@ const photoTitle = document.querySelector('.popup__subtitle');
 //переменные открытия/закрытия всех модалок
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
-const buttonSubmitFormAddCard = document.addForm.submit;
-const buttonSubmitFormEditProfile = document.profileForm.submit;
-
 const params = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -68,7 +65,7 @@ const closePopupByOverlay = (e) => {
 
 function closePopup(popup) {
   document.removeEventListener('keydown', closePopupByEsc);
-  popup.removeEventListener('click', closePopupByOverlay);
+  popup.removeEventListener('mousedown', closePopupByOverlay);
   popup.classList.remove('popup_opened');
 };
 
@@ -97,7 +94,7 @@ const renderElement = (card) => {
 }
 
 cardElements.forEach((item) => {
-  const card = new Card(item, elementTemplate, callbackPhotoClick);
+  const card = new Card(item, '.element_template', callbackPhotoClick);
   const newElement = card.generateCard();
   renderElement(newElement)
   });
@@ -109,12 +106,11 @@ formAddCard.addEventListener('submit', (e) => {
     name: placeName.value,
     link: placeLink.value,
   };
-  const card = new Card(data, elementTemplate, callbackPhotoClick);
+  const card = new Card(data, '.element_template', callbackPhotoClick);
   const newElement = card.generateCard();
   renderElement(newElement);
   formAddCard.reset();
   closePopup(popupAddcard);
-  formCardAdd.inactiveButton(buttonSubmitFormAddCard);
 });
 
 //обработчики открытия модалок
@@ -122,11 +118,12 @@ buttonEditProfile.addEventListener('click', () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openPopup(popupEditProfile);
+  formProfileInfo.resetValidation();
 });
 
 buttonAddCard.addEventListener('click', () => {
   formAddCard.reset();
-  formCardAdd.inactiveButton(buttonSubmitFormAddCard);
+  formCardAdd.resetValidation();
 
   openPopup(popupAddcard);
 });

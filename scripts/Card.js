@@ -7,17 +7,18 @@ export class Card {
   };
 
   _getTemplate() {
-    const cardElement = this._cardSelector.querySelector('.element').cloneNode(true);
+    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
 
     return cardElement;
   };
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardPhoto = this._element.querySelector('.element__photo');
     this._setEventListeners();
 
-    this._element.querySelector('.element__photo').src = this._photo;
-    this._element.querySelector('.element__photo').alt = this._title;
+    this._cardPhoto.src = this._photo;
+    this._cardPhoto.alt = this._title;
     this._element.querySelector('.element__title').textContent = this._title;
 
     return this._element;
@@ -32,7 +33,7 @@ export class Card {
       e.target.classList.toggle('element__like-button_active');
     });
 
-    this._element.querySelector('.element__photo').addEventListener('click', () => {
+    this._cardPhoto.addEventListener('click', () => {
       this._callbackPhotoClick(this._title, this._photo);
     });
   }
