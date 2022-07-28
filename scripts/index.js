@@ -4,7 +4,6 @@ import { FormValidator } from './FormValidator.js'
 
 //переменные для добавление карточек и удаления
 const elementsList = document.querySelector('.elements');
-const elementTemplate = document.querySelector('.element_template').content;
 const formAddCard = document.querySelector('.popup__form_type_add');
 const placeName = document.querySelector('.popup__input_type_place');
 const placeLink = document.querySelector('.popup__input_type_link');
@@ -88,26 +87,30 @@ function handleSubmitEditForm(evt) {
   closePopup(popupEditProfile);
 };
 
-//функция выгрузки карточки
+//функции выгрузки и создания карточкек
 const renderElement = (card) => {
   elementsList.prepend(card)
 }
 
-cardElements.forEach((item) => {
+const createElement = (item) => {
   const card = new Card(item, '.element_template', callbackPhotoClick);
   const newElement = card.generateCard();
-  renderElement(newElement)
-  });
+  return newElement
+}
+
+cardElements.forEach((card) => {
+  const newElement = createElement(card);
+  renderElement(newElement);
+});
 
 //обработчик добавления новых карточек
 formAddCard.addEventListener('submit', (e) => {
   e.preventDefault();
-  const data = {
+  const item = {
     name: placeName.value,
     link: placeLink.value,
   };
-  const card = new Card(data, '.element_template', callbackPhotoClick);
-  const newElement = card.generateCard();
+  const newElement = createElement(item);
   renderElement(newElement);
   formAddCard.reset();
   closePopup(popupAddcard);

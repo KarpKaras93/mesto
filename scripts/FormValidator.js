@@ -22,7 +22,7 @@ _hideInputError(inputElement) {
 
 _activeButton() {
   this._buttonElement.removeAttribute('disabled');
-  this._buttonElement.remove(this._params.inactiveButtonClass);
+  this._buttonElement.classList.remove(this._params.inactiveButtonClass);
 };
 
 _inactiveButton() {
@@ -64,8 +64,8 @@ enableValidation() {
 
 resetValidation() {
   this._inputList.forEach((inputElement) => {
-    this._toggleSubmitButtonState(inputElement)
-    this._hideInputError(inputElement)
+    this._toggleSubmitButtonState(inputElement);
+    this._hideInputError(inputElement);
   });
 };
 
